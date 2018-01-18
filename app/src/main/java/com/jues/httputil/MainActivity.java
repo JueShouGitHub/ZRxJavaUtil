@@ -14,6 +14,7 @@ import com.jues.httputil.service.TestService;
 import com.jues.zlibrary.api.BaseObserver;
 import com.jues.zlibrary.api.HttpApi;
 import com.jues.zlibrary.api.ZRequest;
+import com.jues.zlibrary.api.request.ApiSubscribe;
 import com.jues.zlibrary.api.request.BaseRequest;
 import com.jues.zlibrary.base.ZBaseActivity;
 
@@ -36,9 +37,10 @@ public class MainActivity extends ZBaseActivity {
 
     private void initView() {
         mImageView = findViewById(R.id.imageView);
-        RxView.clicks(findViewById(R.id.textView)).subscribe(v -> initData());
+        RxView.clicks(findViewById(R.id.textView)).subscribe(v -> initData2());
     }
 
+    @Deprecated
     private void initData() {
         TestService service = HttpApi.rxEncryRetrofit().create(TestService.class);
         //EncryptionUtil<RequestEntity> encryptionUtil = new EncryptionUtil<>();
@@ -59,11 +61,22 @@ public class MainActivity extends ZBaseActivity {
                 });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        for (Disposable disposable : disposableList){
-            disposable.dispose();
-        }
+    private void initData2(){
+        TestService service = HttpApi.rxEncryRetrofit().create(TestService.class);
+        //EncryptionUtil<RequestEntity> encryptionUtil = new EncryptionUtil<>();
+        ZRequest<RequestEntity> zRequest = new ZRequest<>();
+        String request = zRequest.getRequest(new RequestEntity(), "Utils", "1001");
+        BaseObserver<AdEntity> observer = new BaseObserver<AdEntity>() {
+            @Override
+            protected void onExecute(AdEntity adEntity) {
+                Glide.with(mImageView).load(adEntity.getResult_data().getImg()).into(mImageView);
+            }
+
+            @Override
+            protected void onError(String msg) {
+                //
+            }
+        };
+        ApiSubscribe.subscribe(service.getData(Constant.BASE_URL,request),observer);
     }
 }

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.JueShouGitHub'
+group = 'com.github.JueShouGitHub'
 android {
     compileSdkVersion 27
     defaultConfig {

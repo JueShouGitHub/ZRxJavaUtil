@@ -95,6 +95,14 @@ public class ZBaseActivity extends AppCompatActivity implements ZBaseView {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        for (Disposable disposable : disposableList) {
+            disposable.dispose();
+        }
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == PERMISSON_REQUESTCODE)
             if (!verifyPermissions(grantResults)) isNeedCheck = false;
