@@ -1,7 +1,6 @@
 package com.jues.httputil;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,13 +14,9 @@ import com.jues.zlibrary.api.BaseObserver;
 import com.jues.zlibrary.api.HttpApi;
 import com.jues.zlibrary.api.ZRequest;
 import com.jues.zlibrary.api.request.ApiSubscribe;
-import com.jues.zlibrary.api.request.BaseRequest;
 import com.jues.zlibrary.base.ZBaseActivity;
 
-import java.util.List;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends ZBaseActivity {
@@ -45,10 +40,10 @@ public class MainActivity extends ZBaseActivity {
         TestService service = HttpApi.rxEncryRetrofit().create(TestService.class);
         //EncryptionUtil<RequestEntity> encryptionUtil = new EncryptionUtil<>();
         ZRequest<RequestEntity> zRequest = new ZRequest<>();
-        String request = zRequest.getRequest(new RequestEntity(), "Utils", "1001");
+        String request = zRequest.getSpecialRequest(new RequestEntity(), "Utils", "1001");
         service.getData(Constant.BASE_URL, request).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<AdEntity>(disposableList) {
+                .subscribe(new BaseObserver<AdEntity>(mContext,disposableList) {
                     @Override
                     protected void onExecute(AdEntity adEntity) {
                         Glide.with(mImageView).load(adEntity.getResult_data().getImg()).into(mImageView);
@@ -65,8 +60,8 @@ public class MainActivity extends ZBaseActivity {
         TestService service = HttpApi.rxEncryRetrofit().create(TestService.class);
         //EncryptionUtil<RequestEntity> encryptionUtil = new EncryptionUtil<>();
         ZRequest<RequestEntity> zRequest = new ZRequest<>();
-        String request = zRequest.getRequest(new RequestEntity(), "Utils", "1001");
-        BaseObserver<AdEntity> observer = new BaseObserver<AdEntity>() {
+        String request = zRequest.getSpecialRequest(new RequestEntity(), "Utils", "1001");
+        BaseObserver<AdEntity> observer = new BaseObserver<AdEntity>(mContext) {
             @Override
             protected void onExecute(AdEntity adEntity) {
                 Glide.with(mImageView).load(adEntity.getResult_data().getImg()).into(mImageView);

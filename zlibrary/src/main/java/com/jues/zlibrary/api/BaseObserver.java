@@ -1,5 +1,9 @@
 package com.jues.zlibrary.api;
 
+import android.content.Context;
+
+import com.jues.zlibrary.dialog.CreateProgressBar;
+
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -15,9 +19,11 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class BaseObserver<T> implements Observer<T> {
+    private Context mContext;
     private List<Disposable> disposableList;
 
-    protected BaseObserver() {
+    protected BaseObserver(Context context) {
+        this.mContext = context;
     }
 
     /**
@@ -26,7 +32,8 @@ public abstract class BaseObserver<T> implements Observer<T> {
      *
      * @param disposableList List<Disposable>
      */
-    public BaseObserver(List<Disposable> disposableList) {
+    public BaseObserver(Context context, List<Disposable> disposableList) {
+        this.mContext = context;
         this.disposableList = disposableList;
     }
 
@@ -42,17 +49,19 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onComplete() {
-
+        CreateProgressBar.dismissProgress();
     }
 
     @Override
     public void onError(Throwable t) {
+        CreateProgressBar.dismissProgress();
         onError(t.getLocalizedMessage());
         //Log.e("JS-Error", t.toString());
     }
 
     @Override
     public void onSubscribe(Disposable d) {
+        CreateProgressBar.showProgress(mContext, "");
         if (null != disposableList) disposableList.add(d);
     }
 

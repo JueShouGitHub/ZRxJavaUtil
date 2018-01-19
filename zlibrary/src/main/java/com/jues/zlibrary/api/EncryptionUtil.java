@@ -157,10 +157,8 @@ public class EncryptionUtil<T> {
 
         String tempString = requestData.toString();
         Log.e("Tag", tempString);
-
-        JSONObject result = new JSONObject();
-        result.put("body", aesEncrypt(tempString));
-
-        return result.toString();
+//        JSONObject result = new JSONObject();
+//        result.put("body", aesEncrypt(tempString));
+        return tempString;
     }
 }

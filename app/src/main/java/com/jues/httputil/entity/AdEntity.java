@@ -49,16 +49,12 @@ public class AdEntity {
 
     public static class ResultDataBean {
         /**
-         * city_list : [{"city_id":"2","city_name":"北京市"},{"city_id":"3","city_name":"天津市"}]
          * img : http://images.fa.net/uploads/images/02/05/2017/a838e7a5b71ed429debdd6ab3efcf370.png
          * img_url : http://www.baidu.com
-         * kefu : 1576787778
          */
 
         private String img;
         private String img_url;
-        private String kefu;
-        private List<CityListBean> city_list;
 
         public String getImg() {
             return img;
@@ -76,46 +72,5 @@ public class AdEntity {
             this.img_url = img_url;
         }
 
-        public String getKefu() {
-            return kefu;
-        }
-
-        public void setKefu(String kefu) {
-            this.kefu = kefu;
-        }
-
-        public List<CityListBean> getCity_list() {
-            return city_list;
-        }
-
-        public void setCity_list(List<CityListBean> city_list) {
-            this.city_list = city_list;
-        }
-
-        public static class CityListBean {
-            /**
-             * city_id : 2
-             * city_name : 北京市
-             */
-
-            private String city_id;
-            private String city_name;
-
-            public String getCity_id() {
-                return city_id;
-            }
-
-            public void setCity_id(String city_id) {
-                this.city_id = city_id;
-            }
-
-            public String getCity_name() {
-                return city_name;
-            }
-
-            public void setCity_name(String city_name) {
-                this.city_name = city_name;
-            }
-        }
     }
 }

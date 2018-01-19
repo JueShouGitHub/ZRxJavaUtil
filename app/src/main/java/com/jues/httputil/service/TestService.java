@@ -1,7 +1,6 @@
 package com.jues.httputil.service;
 
 import com.jues.httputil.entity.AdEntity;
-import com.jues.zlibrary.api.request.BaseRequest;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
