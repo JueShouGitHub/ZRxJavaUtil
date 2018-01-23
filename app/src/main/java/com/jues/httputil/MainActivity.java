@@ -43,7 +43,7 @@ public class MainActivity extends ZBaseActivity {
         String request = zRequest.getSpecialRequest(new RequestEntity(), "Utils", "1001");
         service.getData(Constant.BASE_URL, request).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<AdEntity>(mContext,disposableList) {
+                .subscribe(new BaseObserver<AdEntity>(mContext, disposableList) {
                     @Override
                     protected void onExecute(AdEntity adEntity) {
                         Glide.with(mImageView).load(adEntity.getResult_data().getImg()).into(mImageView);
@@ -56,7 +56,7 @@ public class MainActivity extends ZBaseActivity {
                 });
     }
 
-    private void initData2(){
+    private void initData2() {
         TestService service = HttpApi.rxEncryRetrofit().create(TestService.class);
         //EncryptionUtil<RequestEntity> encryptionUtil = new EncryptionUtil<>();
         ZRequest<RequestEntity> zRequest = new ZRequest<>();
@@ -66,12 +66,7 @@ public class MainActivity extends ZBaseActivity {
             protected void onExecute(AdEntity adEntity) {
                 Glide.with(mImageView).load(adEntity.getResult_data().getImg()).into(mImageView);
             }
-
-            @Override
-            protected void onError(String msg) {
-                //
-            }
         };
-        ApiSubscribe.subscribe(service.getData(Constant.BASE_URL,request),observer);
+        ApiSubscribe.subscribe(service.getData(Constant.BASE_URL, request), observer);
     }
 }
