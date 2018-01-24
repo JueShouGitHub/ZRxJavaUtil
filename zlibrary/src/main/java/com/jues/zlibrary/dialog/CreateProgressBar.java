@@ -1,7 +1,14 @@
 package com.jues.zlibrary.dialog;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
+
+import com.jues.zlibrary.R;
+import com.jues.zlibrary.callback.BaseCallback;
+import com.roger.gifloadinglibrary.GifLoadingView;
 
 import net.lemonsoft.lemonbubble.LemonBubble;
 import net.lemonsoft.lemonbubble.LemonBubbleInfo;
@@ -16,18 +23,26 @@ import net.lemonsoft.lemonbubble.LemonBubbleInfo;
  */
 
 public class CreateProgressBar {
-    private static void getInfo(){
+    @SuppressLint("StaticFieldLeak")
+    private static GifLoadingView loadingView = new GifLoadingView();
+
+    private static void getInfo() {
         LemonBubbleInfo bubbleInfo = LemonBubble.getRoundProgressBubbleInfo();
         bubbleInfo.setIconColor(Color.YELLOW);
     }
 
-    public static void showProgress(Context context,String msg){
-        getInfo();
-        if (context != null)LemonBubble.showRoundProgress(context,msg);
+    public static void showProgress(Context context, String msg) {
+//        getInfo();
+//        if (context != null)LemonBubble.showRoundProgress(context,msg);
+        loadingView.setCancelable(false);
+        Activity activity = (Activity) context;
+        loadingView.setImageResource(R.drawable.load_cat_eye);
+        loadingView.show(activity.getFragmentManager(), msg);
     }
 
-    public static void dismissProgress(){
-        getInfo();
-        LemonBubble.forceHide();
+    public static void dismissProgress() {
+//        getInfo();
+//        LemonBubble.forceHide();
+        if (loadingView != null) loadingView.dismiss();
     }
 }

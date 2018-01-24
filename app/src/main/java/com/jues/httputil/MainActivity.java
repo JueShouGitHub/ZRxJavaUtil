@@ -1,6 +1,7 @@
 package com.jues.httputil;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,6 +16,8 @@ import com.jues.zlibrary.api.HttpApi;
 import com.jues.zlibrary.api.ZRequest;
 import com.jues.zlibrary.api.request.ApiSubscribe;
 import com.jues.zlibrary.base.ZBaseActivity;
+import com.jues.zlibrary.callback.BaseCallback;
+import com.jues.zlibrary.dialog.CreateProgressBar;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -32,7 +35,7 @@ public class MainActivity extends ZBaseActivity {
 
     private void initView() {
         mImageView = findViewById(R.id.imageView);
-        RxView.clicks(findViewById(R.id.textView)).subscribe(v -> initData2());
+        RxView.clicks(findViewById(R.id.textView)).subscribe(v -> initData3());
     }
 
     @Deprecated
@@ -68,5 +71,9 @@ public class MainActivity extends ZBaseActivity {
             }
         };
         ApiSubscribe.subscribe(service.getData(Constant.BASE_URL, request), observer);
+    }
+
+    private void initData3(){
+        CreateProgressBar.showProgress(mContext, "加载中...");
     }
 }

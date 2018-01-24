@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.jues.zlibrary.dialog.CreateProgressBar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,11 +47,11 @@ public class ZBaseFragment extends Fragment implements ZBaseView{
 
     @Override
     public void showLoading() {
-
+        CreateProgressBar.showProgress(getContext(),"");
     }
 
     @Override
     public void dismissLoading() {
-
+        CreateProgressBar.dismissProgress();
     }
 }

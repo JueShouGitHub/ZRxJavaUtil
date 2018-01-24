@@ -12,6 +12,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.jues.zlibrary.dialog.CreateProgressBar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,12 +80,12 @@ public class ZBaseActivity extends AppCompatActivity implements ZBaseView {
 
     @Override
     public void showLoading() {
-
+        CreateProgressBar.showProgress(mContext,"");
     }
 
     @Override
     public void dismissLoading() {
-
+        CreateProgressBar.dismissProgress();
     }
 
     @Override
