@@ -1,4 +1,4 @@
-package com.jues.zlibrary.api;
+package com.jues.zlibrary.decode;
 
 import android.support.annotation.NonNull;
 

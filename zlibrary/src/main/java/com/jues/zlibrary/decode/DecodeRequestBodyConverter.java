@@ -1,10 +1,11 @@
-package com.jues.zlibrary.api;
+package com.jues.zlibrary.decode;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
+import com.jues.zlibrary.api.EncryptionUtil;
 
 import org.json.JSONObject;
 

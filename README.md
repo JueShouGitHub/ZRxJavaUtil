@@ -17,6 +17,6 @@ allprojects {
 > Step 2\. Add the dependency
 ```
 dependencies {
-	        compile 'com.github.JueShouGitHub:ZRxJavaUtil:v1.0.5'
+	        compile 'com.github.JueShouGitHub:ZRxJavaUtil:v1.0.6'
 	}
 ```
