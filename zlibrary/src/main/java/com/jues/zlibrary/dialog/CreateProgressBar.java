@@ -41,8 +41,8 @@ public class CreateProgressBar {
         executePendingTransactions（）方法强制FragmentTransaction实例的工作立即执行。
         当对executePendingExecutions（）方法的调用返回时，
         我们知道所有提交的FragmentTransaction工作都已执行。*/
-        activity.getFragmentManager().executePendingTransactions();
-        loadingView.getDialog().setCanceledOnTouchOutside(false);
+        boolean b = activity.getFragmentManager().executePendingTransactions();
+        if (b) loadingView.getDialog().setCanceledOnTouchOutside(false);
         return loadingView;
     }
 
