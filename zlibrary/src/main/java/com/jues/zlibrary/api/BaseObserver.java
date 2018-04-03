@@ -1,8 +1,11 @@
 package com.jues.zlibrary.api;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 
 import com.jues.zlibrary.dialog.CreateProgressBar;
+import com.roger.gifloadinglibrary.GifLoadingView;
 
 import java.util.List;
 
@@ -57,13 +60,25 @@ public abstract class BaseObserver<T> implements Observer<T> {
     public void onError(Throwable t) {
         CreateProgressBar.dismissProgress();
         onError(t.getLocalizedMessage());
-        //Log.e("JS-Error", t.toString());
+        Log.e("JS-Error", t.toString());
     }
 
     @Override
-    public void onSubscribe(Disposable d) {
-        CreateProgressBar.showProgress(mContext, "");
+    public void onSubscribe(final Disposable d) {
+        GifLoadingView loadingView = CreateProgressBar.showProgress(mContext, "");
         if (null != disposableList) disposableList.add(d);
+        loadingView.onCancel(new DialogInterface() {
+            @Override
+            public void cancel() {
+                disposableList.remove(d);
+                d.dispose();
+            }
+
+            @Override
+            public void dismiss() {
+
+            }
+        });
     }
 
 }

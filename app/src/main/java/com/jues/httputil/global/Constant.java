@@ -10,5 +10,5 @@ package com.jues.httputil.global;
  */
 
 public class Constant {
-    public static final String BASE_URL = "http://skapi.shukezx.cn/";
+    public static final String BASE_URL = "http://www.google.com/";
 }

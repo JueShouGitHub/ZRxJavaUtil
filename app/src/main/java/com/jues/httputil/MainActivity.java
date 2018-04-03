@@ -2,21 +2,15 @@ package com.jues.httputil;
 
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jues.httputil.entity.AdEntity;
 import com.jues.httputil.global.Constant;
-import com.jues.httputil.request.RequestEntity;
 import com.jues.httputil.service.TestService;
 import com.jues.zlibrary.api.BaseObserver;
 import com.jues.zlibrary.api.HttpApi;
-import com.jues.zlibrary.api.ZRequest;
 import com.jues.zlibrary.api.request.ApiSubscribe;
 import com.jues.zlibrary.base.ZBaseActivity;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends ZBaseActivity {
     private ImageView mImageView;
@@ -31,44 +25,18 @@ public class MainActivity extends ZBaseActivity {
 
     private void initView() {
         mImageView = findViewById(R.id.imageView);
-        RxView.clicks(findViewById(R.id.textView)).subscribe(v -> initData2());
+        RxView.clicks(findViewById(R.id.textView)).subscribe(v -> test());
     }
 
-    @Deprecated
-    private void initData() {
+    private void test() {
         TestService service = HttpApi.rxEncryRetrofit().create(TestService.class);
-        //EncryptionUtil<RequestEntity> encryptionUtil = new EncryptionUtil<>();
-        ZRequest<RequestEntity> zRequest = new ZRequest<>();
-        String request = zRequest.getSpecialRequest(new RequestEntity(), "Utils", "1001");
-        service.getData(Constant.BASE_URL, request).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<AdEntity>(mContext, disposableList) {
-                    @Override
-                    protected void onExecute(AdEntity adEntity) {
-                        toast(adEntity.getResult_data().getImg());
-                        //Glide.with(mImageView).load(adEntity.getResult_data().getImg()).into(mImageView);
-                    }
-
-                    @Override
-                    protected void onError(String msg) {
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void initData2() {
-        TestService service = HttpApi.rxEncryRetrofit().create(TestService.class);
-        //EncryptionUtil<RequestEntity> encryptionUtil = new EncryptionUtil<>();
-        ZRequest<RequestEntity> zRequest = new ZRequest<>();
-        String request = zRequest.getSpecialRequest(new RequestEntity(), "Utils", "1001");
-        BaseObserver<AdEntity> observer = new BaseObserver<AdEntity>(mContext) {
+        BaseObserver<AdEntity> observer = new BaseObserver<AdEntity>(mContext, disposableList) {
             @Override
             protected void onExecute(AdEntity adEntity) {
-                toast(adEntity.getResult_data().getImg());
-                //Glide.with(mImageView).load(adEntity.getResult_data().getImg()).into(mImageView);
+                //
             }
         };
-        ApiSubscribe.subscribe(service.getData(Constant.BASE_URL, request), observer);
+        ApiSubscribe.subscribe(service.getData(Constant.BASE_URL, ""), observer);
     }
 
 }
