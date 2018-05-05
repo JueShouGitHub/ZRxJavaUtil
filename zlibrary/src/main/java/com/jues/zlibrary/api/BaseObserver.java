@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 
+import com.android.tu.loadingdialog.LoadingDailog;
 import com.jues.zlibrary.dialog.CreateProgressBar;
-import com.roger.gifloadinglibrary.GifLoadingView;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
      *
      * @param disposableList List<Disposable>
      */
-    public BaseObserver(Context context, List<Disposable> disposableList) {
+    protected BaseObserver(Context context, List<Disposable> disposableList) {
         this.mContext = context;
         this.disposableList = disposableList;
     }
@@ -43,7 +43,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
     //执行
     protected abstract void onExecute(T t);
 
-    protected void onError(String msg) {
+    private void onError(String msg) {
     }
 
     @Override
@@ -65,18 +65,13 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onSubscribe(final Disposable d) {
-        GifLoadingView loadingView = CreateProgressBar.showProgress(mContext, "");
+        LoadingDailog loadingView = CreateProgressBar.showProgress(mContext, "加载中...");
         if (null != disposableList) disposableList.add(d);
-        loadingView.onCancel(new DialogInterface() {
+        loadingView.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
-            public void cancel() {
+            public void onCancel(DialogInterface dialog) {
                 disposableList.remove(d);
                 d.dispose();
-            }
-
-            @Override
-            public void dismiss() {
-
             }
         });
     }

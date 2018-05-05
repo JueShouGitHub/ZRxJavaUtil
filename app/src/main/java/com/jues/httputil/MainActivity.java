@@ -3,7 +3,6 @@ package com.jues.httputil;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.jakewharton.rxbinding2.view.RxView;
 import com.jues.httputil.entity.AdEntity;
 import com.jues.httputil.global.Constant;
 import com.jues.httputil.service.TestService;
@@ -13,7 +12,6 @@ import com.jues.zlibrary.api.request.ApiSubscribe;
 import com.jues.zlibrary.base.ZBaseActivity;
 
 public class MainActivity extends ZBaseActivity {
-    private ImageView mImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +22,8 @@ public class MainActivity extends ZBaseActivity {
     }
 
     private void initView() {
-        mImageView = findViewById(R.id.imageView);
-        RxView.clicks(findViewById(R.id.textView)).subscribe(v -> test());
+        ImageView imageView = findViewById(R.id.imageView);
+        findViewById(R.id.textView).setOnClickListener(v -> test());
     }
 
     private void test() {

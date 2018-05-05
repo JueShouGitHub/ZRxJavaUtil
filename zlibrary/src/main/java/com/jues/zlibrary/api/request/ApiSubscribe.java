@@ -17,11 +17,10 @@ public class ApiSubscribe {
 
     /**
      * 线程控制，省去重复订阅的代码
-     *
-     * @param observable
+     *  @param observable
      * @param observer
      */
-    public static void subscribe(Observable observable, Observer observer) {
+    public static void subscribe(Observable<AdEntity> observable, Observer observer) {
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
