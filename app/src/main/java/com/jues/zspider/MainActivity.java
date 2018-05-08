@@ -1,11 +1,11 @@
-package com.jues.httputil;
+package com.jues.zspider;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.jues.httputil.entity.AdEntity;
-import com.jues.httputil.global.Constant;
-import com.jues.httputil.service.TestService;
+import com.jues.zspider.entity.AdEntity;
+import com.jues.zspider.global.Constant;
+import com.jues.zspider.service.TestService;
 import com.jues.zlibrary.api.BaseObserver;
 import com.jues.zlibrary.api.HttpApi;
 import com.jues.zlibrary.api.request.ApiSubscribe;

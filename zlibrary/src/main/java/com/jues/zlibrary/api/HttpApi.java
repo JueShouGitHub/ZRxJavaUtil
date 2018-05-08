@@ -28,7 +28,6 @@ public class HttpApi {
     public static Retrofit retrofit() {
         return new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
                 .client(HttpConfig.httpConfig())
-                .baseUrl("http://www.google.com/")
                 .build();
     }
 
@@ -43,7 +42,6 @@ public class HttpApi {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(DecodeConverterFactory.create())
                 .client(HttpConfig.httpConfig())
-                .baseUrl("http://www.google.com/")
                 .build();
     }
 
@@ -58,6 +56,6 @@ public class HttpApi {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(HttpConfig.httpConfig())
-                .baseUrl("http://www.google.com/").build();
+                .build();
     }
 }

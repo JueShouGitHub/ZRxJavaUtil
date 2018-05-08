@@ -1,4 +1,4 @@
-package com.jues.httputil;
+package com.jues.zspider;
 
 import org.junit.Test;
 

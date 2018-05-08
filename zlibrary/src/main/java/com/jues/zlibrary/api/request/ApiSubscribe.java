@@ -20,7 +20,7 @@ public class ApiSubscribe {
      *  @param observable
      * @param observer
      */
-    public static void subscribe(Observable<AdEntity> observable, Observer observer) {
+    public static<T> void subscribe(Observable<T> observable, Observer observer) {
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,6 +1,4 @@
-package com.jues.httputil.entity;
-
-import java.util.List;
+package com.jues.zspider.global;
 
 /**
  * Created by Intellij IDEA .
@@ -11,6 +9,6 @@ import java.util.List;
  * 修订：====================
  */
 
-public class AdEntity {
-
+public class Constant {
+    public static final String BASE_URL = "http://www.google.com/";
 }

@@ -1,6 +1,6 @@
-package com.jues.httputil.service;
+package com.jues.zspider.service;
 
-import com.jues.httputil.entity.AdEntity;
+import com.jues.zspider.entity.AdEntity;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
