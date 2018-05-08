@@ -32,7 +32,7 @@ public class HttpConfig {
                 Log.d("LogDebug", message);
             }
         });
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         return interceptor;
     }
 
