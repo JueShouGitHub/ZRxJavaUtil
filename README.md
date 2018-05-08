@@ -8,15 +8,15 @@
 
 ```
     allprojects {
-            repositories {
-                ...
-                maven { url 'https://jitpack.io' }
-            }
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
         }
+    }
 ```
 > Step 2\. Add the dependency
 ```
     dependencies {
-           compile 'com.github.JueShouGitHub:ZRxJavaUtil:v1.0.6'
-        }
+         implementation 'com.github.JueShouGitHub:ZRxJavaUtil:v1.10.1'
+    }
 ```
