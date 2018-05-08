@@ -25,11 +25,9 @@ public class HttpApi {
      * @return 返回一个Retrofit实例
      */
     @NonNull
-    public static Retrofit retrofit() {
+    public static Retrofit.Builder retrofit() {
         return new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-                .client(HttpConfig.httpConfig())
-                .baseUrl("http://www.google.com/")
-                .build();
+                .client(HttpConfig.httpConfig());
     }
 
     /**
@@ -38,13 +36,11 @@ public class HttpApi {
      * @return 返回一个Retrofit实例
      */
     @NonNull
-    public static Retrofit rxEncryRetrofit() {//加密
+    public static Retrofit.Builder rxEncryRetrofit() {//加密
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(DecodeConverterFactory.create())
-                .client(HttpConfig.httpConfig())
-                .baseUrl("http://www.google.com/")
-                .build();
+                .client(HttpConfig.httpConfig());
     }
 
     /**
@@ -53,11 +49,10 @@ public class HttpApi {
      * @return 返回一个Retrofit实例
      */
     @NonNull
-    public static Retrofit rxNoEncryRetrofit() {
+    public static Retrofit.Builder rxNoEncryRetrofit() {
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(HttpConfig.httpConfig())
-                .baseUrl("http://www.google.com/").build();
+                .client(HttpConfig.httpConfig());
     }
 }

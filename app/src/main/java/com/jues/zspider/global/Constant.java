@@ -10,5 +10,5 @@ package com.jues.zspider.global;
  */
 
 public class Constant {
-    public static final String BASE_URL = "http://www.google.com/";
+    public static final String BASE_URL = "http://www.baidu.com/";
 }
