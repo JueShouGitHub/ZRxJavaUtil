@@ -43,7 +43,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
     //执行
     protected abstract void onExecute(T t);
 
-    private void onError(String msg) {
+    protected void onError(String msg) {
     }
 
     @Override
