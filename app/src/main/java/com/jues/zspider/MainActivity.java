@@ -2,6 +2,7 @@ package com.jues.zspider;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.jues.zspider.entity.AdEntity;
 import com.jues.zspider.global.Constant;
@@ -30,7 +31,14 @@ public class MainActivity extends ZBaseActivity {
         BaseObserver<AdEntity> observer = new BaseObserver<AdEntity>(mContext, disposableList) {
             @Override
             protected void onExecute(AdEntity adEntity) {
-                //
+                Toast.makeText(MainActivity.this, "嗯~ 哈哈哈", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                super.onError(t);
+                t.printStackTrace();
+                Toast.makeText(MainActivity.this, "嗯~ 呜呜呜", Toast.LENGTH_SHORT).show();
             }
         };
         ApiSubscribe.subscribe(service.getData(Constant.BASE_URL, ""), observer);
