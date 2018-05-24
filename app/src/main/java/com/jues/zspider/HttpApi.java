@@ -13,6 +13,6 @@ import retrofit2.Retrofit;
  */
 public class HttpApi {
     public static Retrofit getRetrofit(){
-        return com.jues.zlibrary.api.HttpApi.rxEncryRetrofit().baseUrl(Constant.BASE_URL).build();
+        return com.jues.zlibrary.api.HttpApi.rxNoEncryRetrofit().baseUrl(Constant.BASE_URL).build();
     }
 }

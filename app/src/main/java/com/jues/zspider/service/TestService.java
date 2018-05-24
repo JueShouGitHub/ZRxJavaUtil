@@ -4,7 +4,9 @@ import com.jues.zspider.entity.AdEntity;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 /**
@@ -17,6 +19,7 @@ import retrofit2.http.Url;
  */
 
 public interface TestService {
-    @POST()
-    Observable<AdEntity> getData(@Url String url, @Body String request);
+    @Headers("Authorization:APPCODE c7578936e2a542799f4b32c2d95c2f84")
+    @POST("whapi/json/alicityweather/briefforecast3days")
+    Observable<AdEntity> getData(@Query("cityId") String cityId);
 }

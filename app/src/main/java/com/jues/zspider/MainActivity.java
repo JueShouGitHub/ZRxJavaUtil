@@ -41,7 +41,7 @@ public class MainActivity extends ZBaseActivity {
                 Toast.makeText(MainActivity.this, "嗯~ 呜呜呜", Toast.LENGTH_SHORT).show();
             }
         };
-        ApiSubscribe.subscribe(service.getData(Constant.BASE_URL, ""), observer);
+        ApiSubscribe.subscribe(service.getData("2"), observer);
     }
 
 }

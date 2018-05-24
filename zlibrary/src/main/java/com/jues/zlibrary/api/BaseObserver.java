@@ -22,11 +22,17 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class BaseObserver<T> implements Observer<T> {
-    private Context mContext;
-    private List<Disposable> disposableList;
+    protected boolean showLoading = true;
+    protected Context mContext;
+    protected List<Disposable> disposableList;
 
     protected BaseObserver(Context context) {
         this.mContext = context;
+    }
+
+    protected BaseObserver(Context context, boolean isShow) {
+        this.mContext = context;
+        this.showLoading = isShow;
     }
 
     /**
@@ -38,6 +44,19 @@ public abstract class BaseObserver<T> implements Observer<T> {
     protected BaseObserver(Context context, List<Disposable> disposableList) {
         this.mContext = context;
         this.disposableList = disposableList;
+    }
+
+    /**
+     * 构造方法 用于保存Disposable 取消请求 解除订阅
+     * 在activity的onDestroy方法中遍历调用
+     *
+     * @param disposableList List<Disposable>
+     * @param isShow         是否显示loading
+     */
+    protected BaseObserver(Context context, List<Disposable> disposableList, boolean isShow) {
+        this.mContext = context;
+        this.disposableList = disposableList;
+        this.showLoading = isShow;
     }
 
     //执行
@@ -66,6 +85,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(final Disposable d) {
         LoadingDailog loadingView = CreateProgressBar.showProgress(mContext, "加载中...");
+        if (showLoading) loadingView.show();
         if (null != disposableList) disposableList.add(d);
         loadingView.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override

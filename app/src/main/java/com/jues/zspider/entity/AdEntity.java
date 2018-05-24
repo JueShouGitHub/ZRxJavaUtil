@@ -15,7 +15,7 @@ public class AdEntity {
 
     /**
      * code : 0
-     * data : {"city":{"cityId":2,"counname":"中国","name":"北京市","pname":"北京市","timezone":"8"},"forecast":[{"conditionDay":"晴","conditionIdDay":"0","conditionIdNight":"30","conditionNight":"晴","predictDate":"2018-05-23","tempDay":"30","tempNight":"9","updatetime":"2018-05-23 15:08:00","windDirDay":"西南风","windDirNight":"西南风","windLevelDay":"3-4","windLevelNight":"3"},{"conditionDay":"晴","conditionIdDay":"0","conditionIdNight":"30","conditionNight":"晴","predictDate":"2018-05-24","tempDay":"31","tempNight":"17","updatetime":"2018-05-23 15:08:00","windDirDay":"南风","windDirNight":"南风","windLevelDay":"3","windLevelNight":"3"},{"conditionDay":"晴","conditionIdDay":"0","conditionIdNight":"31","conditionNight":"多云","predictDate":"2018-05-25","tempDay":"31","tempNight":"18","updatetime":"2018-05-23 15:08:00","windDirDay":"南风","windDirNight":"南风","windLevelDay":"3","windLevelNight":"3"}]}
+     * data : {"city":{"cityId":284609,"counname":"中国","name":"东城区","pname":"北京市"},"forecast":[{"conditionDay":"多云","conditionIdDay":"1","conditionIdNight":"31","conditionNight":"多云","predictDate":"2016-09-01","tempDay":"27","tempNight":"18","updatetime":"2016-09-01 09:07:08","windDirDay":"西北风","windDirNight":"西北风","windLevelDay":"3","windLevelNight":"2"},{"conditionDay":"多云","conditionIdDay":"1","conditionIdNight":"31","conditionNight":"多云","predictDate":"2016-09-02","tempDay":"27","tempNight":"20","updatetime":"2016-09-01 09:07:08","windDirDay":"北风","windDirNight":"东南风","windLevelDay":"2","windLevelNight":"1"},{"conditionDay":"多云","conditionIdDay":"1","conditionIdNight":"31","conditionNight":"多云","predictDate":"2016-09-03","tempDay":"28","tempNight":"20","updatetime":"2016-09-01 09:07:08","windDirDay":"南风","windDirNight":"东风","windLevelDay":"2","windLevelNight":"2"}]}
      * msg : success
      * rc : {"c":0,"p":"success"}
      */
@@ -57,20 +57,10 @@ public class AdEntity {
         this.rc = rc;
     }
 
-    @Override
-    public String toString() {
-        return "AdEntity{" +
-                "code=" + code +
-                ", data=" + data +
-                ", msg='" + msg + '\'' +
-                ", rc=" + rc +
-                '}';
-    }
-
     public static class DataBean {
         /**
-         * city : {"cityId":2,"counname":"中国","name":"北京市","pname":"北京市","timezone":"8"}
-         * forecast : [{"conditionDay":"晴","conditionIdDay":"0","conditionIdNight":"30","conditionNight":"晴","predictDate":"2018-05-23","tempDay":"30","tempNight":"9","updatetime":"2018-05-23 15:08:00","windDirDay":"西南风","windDirNight":"西南风","windLevelDay":"3-4","windLevelNight":"3"},{"conditionDay":"晴","conditionIdDay":"0","conditionIdNight":"30","conditionNight":"晴","predictDate":"2018-05-24","tempDay":"31","tempNight":"17","updatetime":"2018-05-23 15:08:00","windDirDay":"南风","windDirNight":"南风","windLevelDay":"3","windLevelNight":"3"},{"conditionDay":"晴","conditionIdDay":"0","conditionIdNight":"31","conditionNight":"多云","predictDate":"2018-05-25","tempDay":"31","tempNight":"18","updatetime":"2018-05-23 15:08:00","windDirDay":"南风","windDirNight":"南风","windLevelDay":"3","windLevelNight":"3"}]
+         * city : {"cityId":284609,"counname":"中国","name":"东城区","pname":"北京市"}
+         * forecast : [{"conditionDay":"多云","conditionIdDay":"1","conditionIdNight":"31","conditionNight":"多云","predictDate":"2016-09-01","tempDay":"27","tempNight":"18","updatetime":"2016-09-01 09:07:08","windDirDay":"西北风","windDirNight":"西北风","windLevelDay":"3","windLevelNight":"2"},{"conditionDay":"多云","conditionIdDay":"1","conditionIdNight":"31","conditionNight":"多云","predictDate":"2016-09-02","tempDay":"27","tempNight":"20","updatetime":"2016-09-01 09:07:08","windDirDay":"北风","windDirNight":"东南风","windLevelDay":"2","windLevelNight":"1"},{"conditionDay":"多云","conditionIdDay":"1","conditionIdNight":"31","conditionNight":"多云","predictDate":"2016-09-03","tempDay":"28","tempNight":"20","updatetime":"2016-09-01 09:07:08","windDirDay":"南风","windDirNight":"东风","windLevelDay":"2","windLevelNight":"2"}]
          */
 
         private CityBean city;
@@ -94,18 +84,16 @@ public class AdEntity {
 
         public static class CityBean {
             /**
-             * cityId : 2
+             * cityId : 284609
              * counname : 中国
-             * name : 北京市
+             * name : 东城区
              * pname : 北京市
-             * timezone : 8
              */
 
             private int cityId;
             private String counname;
             private String name;
             private String pname;
-            private String timezone;
 
             public int getCityId() {
                 return cityId;
@@ -138,30 +126,22 @@ public class AdEntity {
             public void setPname(String pname) {
                 this.pname = pname;
             }
-
-            public String getTimezone() {
-                return timezone;
-            }
-
-            public void setTimezone(String timezone) {
-                this.timezone = timezone;
-            }
         }
 
         public static class ForecastBean {
             /**
-             * conditionDay : 晴
-             * conditionIdDay : 0
-             * conditionIdNight : 30
-             * conditionNight : 晴
-             * predictDate : 2018-05-23
-             * tempDay : 30
-             * tempNight : 9
-             * updatetime : 2018-05-23 15:08:00
-             * windDirDay : 西南风
-             * windDirNight : 西南风
-             * windLevelDay : 3-4
-             * windLevelNight : 3
+             * conditionDay : 多云
+             * conditionIdDay : 1
+             * conditionIdNight : 31
+             * conditionNight : 多云
+             * predictDate : 2016-09-01
+             * tempDay : 27
+             * tempNight : 18
+             * updatetime : 2016-09-01 09:07:08
+             * windDirDay : 西北风
+             * windDirNight : 西北风
+             * windLevelDay : 3
+             * windLevelNight : 2
              */
 
             private String conditionDay;
