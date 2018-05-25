@@ -84,8 +84,11 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onSubscribe(final Disposable d) {
-        LoadingDailog loadingView = CreateProgressBar.showProgress(mContext, "加载中...");
-        if (showLoading) loadingView.show();
+        LoadingDailog loadingView = null;
+        if (null != mContext) {
+            loadingView = CreateProgressBar.showProgress(mContext, "加载中...");
+            if (showLoading) loadingView.show();
+        }
         if (null != disposableList) disposableList.add(d);
         loadingView.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
