@@ -1,4 +1,4 @@
-package com.jues.crashlogcathelper;
+package crashlogcathelper;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
