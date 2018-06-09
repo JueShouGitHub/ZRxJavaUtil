@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ZRxJavaUtil.iml" filepath="$PROJECT_DIR$/ZRxJavaUtil.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/crashlogcathelperlibrary/crashlogcathelperlibrary.iml" filepath="$PROJECT_DIR$/crashlogcathelperlibrary/crashlogcathelperlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/zlibrary/zlibrary.iml" filepath="$PROJECT_DIR$/zlibrary/zlibrary.iml" />
     </modules>
   </component>

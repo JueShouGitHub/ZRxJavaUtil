@@ -1,1 +1,1 @@
-include ':app', ':zlibrary', ':crashlogcathelperlibrary'
+include ':app', ':zlibrary'

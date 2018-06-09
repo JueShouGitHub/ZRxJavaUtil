@@ -2,7 +2,7 @@ package com.jues.zspider;
 
 import android.app.Application;
 
-import com.jues.crashlogcathelperlibrary.CrashLogcatHelper;
+import com.jues.crashlogcathelper.CrashLogcatHelper;
 
 /**
  * Created by Android Studio .

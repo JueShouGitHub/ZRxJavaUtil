@@ -1,4 +1,4 @@
-package com.jues.crashlogcathelperlibrary;
+package com.jues.crashlogcathelper;
 
 import android.os.Environment;
 
@@ -22,8 +22,8 @@ class FileUtil {
         File file = new File(path);
         new Thread(() -> {
             if (!file.isDirectory()) fileNameList.add(file.getName());
-            for(String name : fileNameList){
-                if(filter.accept(null, name)){
+            for (String name : fileNameList) {
+                if (filter.accept(null, name)) {
                     File file1 = new File(name);
                     file1.delete();
                 }
