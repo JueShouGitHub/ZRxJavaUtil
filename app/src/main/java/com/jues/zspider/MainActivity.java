@@ -2,8 +2,10 @@ package com.jues.zspider;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jues.crashlogcathelperlibrary.CrashLogcatHelper;
 import com.jues.zlibrary.api.BaseObserver;
 import com.jues.zlibrary.api.request.ApiSubscribe;
 import com.jues.zlibrary.base.ZBaseActivity;
