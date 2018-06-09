@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.jues.zspider.entity.AdEntity;
-import com.jues.zspider.global.Constant;
-import com.jues.zspider.service.TestService;
 import com.jues.zlibrary.api.BaseObserver;
 import com.jues.zlibrary.api.request.ApiSubscribe;
 import com.jues.zlibrary.base.ZBaseActivity;
+import com.jues.zspider.entity.AdEntity;
+import com.jues.zspider.service.TestService;
 
 public class MainActivity extends ZBaseActivity {
 
@@ -19,6 +18,11 @@ public class MainActivity extends ZBaseActivity {
         setContentView(R.layout.activity_main);
         initView();
         //initData();
+        //日志操作
+//        CrashLogcatHelper.setTag(getClass().getSimpleName());
+//        CrashLogcatHelper.setDays(0);
+//        TextView textView = null;
+//        textView.setText("sjsjsj");
     }
 
     private void initView() {
