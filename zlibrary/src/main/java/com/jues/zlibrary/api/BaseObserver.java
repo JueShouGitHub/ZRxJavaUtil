@@ -21,7 +21,7 @@ import io.reactivex.disposables.Disposable;
  * 修订：====================
  */
 
-public abstract class BaseObserver<T> implements Observer<T> {
+public class BaseObserver<T> implements Observer<T> {
     protected boolean showLoading = true;
     protected Context mContext;
     protected List<Disposable> disposableList;

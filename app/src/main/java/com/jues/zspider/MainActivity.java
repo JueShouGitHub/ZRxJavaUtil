@@ -48,13 +48,4 @@ public class MainActivity extends ZBaseActivity {
         ApiSubscribe.subscribe(service.getData("2"), observer);
     }
 
-    private void test2() {
-        TestService testService = HttpApi.getRetrofit().create(TestService.class);
-        ApiSubscribe.subscribe(testService.getDatas(""), new BaseObserver<BaseObserver.RxExecute<AdEntity>>
-                (MainActivity.this, adEntityRxExecute -> {
-                    Toast.makeText(MainActivity.this, "嗯~ 哈哈哈", Toast.LENGTH_SHORT).show();
-                }) {
-                });
-    }
-
 }
