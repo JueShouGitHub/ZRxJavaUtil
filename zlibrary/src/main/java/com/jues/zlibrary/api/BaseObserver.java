@@ -25,6 +25,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
     protected boolean showLoading = true;
     protected Context mContext;
     protected List<Disposable> disposableList;
+    protected RxExecute<T> mRxExecute;
 
     protected BaseObserver(Context context) {
         this.mContext = context;
@@ -33,6 +34,24 @@ public abstract class BaseObserver<T> implements Observer<T> {
     protected BaseObserver(Context context, boolean isShow) {
         this.mContext = context;
         this.showLoading = isShow;
+    }
+
+    public BaseObserver(Context context, RxExecute<T> rxExecute) {
+        mContext = context;
+        mRxExecute = rxExecute;
+    }
+
+    public BaseObserver(Context context, boolean showLoading, RxExecute<T> rxExecute) {
+        this.showLoading = showLoading;
+        mContext = context;
+        mRxExecute = rxExecute;
+    }
+
+    public BaseObserver(Context context, boolean showLoading, List<Disposable> disposableList, RxExecute<T> rxExecute) {
+        this.showLoading = showLoading;
+        mContext = context;
+        this.disposableList = disposableList;
+        mRxExecute = rxExecute;
     }
 
     /**
@@ -60,14 +79,16 @@ public abstract class BaseObserver<T> implements Observer<T> {
     }
 
     //执行
-    protected abstract void onExecute(T t);
+    protected void onExecute(T t) {
+    }
 
     protected void onError(String msg) {
     }
 
     @Override
     public void onNext(T t) {
-        onExecute(t);
+        if (null != mRxExecute) mRxExecute.onExecute(t);
+        else onExecute(t);
     }
 
     @Override
@@ -84,19 +105,21 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onSubscribe(final Disposable d) {
-        LoadingDailog loadingView = null;
         if (null != mContext) {
-            loadingView = CreateProgressBar.showProgress(mContext, "加载中...");
+            LoadingDailog loadingView = CreateProgressBar.showProgress(mContext, "加载中...");
             if (showLoading) loadingView.show();
+            loadingView.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    disposableList.remove(d);
+                    d.dispose();
+                }
+            });
         }
         if (null != disposableList) disposableList.add(d);
-        loadingView.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                disposableList.remove(d);
-                d.dispose();
-            }
-        });
     }
 
+    public interface RxExecute<T> {
+        void onExecute(T t);
+    }
 }

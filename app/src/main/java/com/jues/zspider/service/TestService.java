@@ -1,5 +1,7 @@
 package com.jues.zspider.service;
 
+import com.jues.zlibrary.api.BaseObservable;
+import com.jues.zlibrary.api.BaseObserver;
 import com.jues.zspider.entity.AdEntity;
 
 import io.reactivex.Observable;
@@ -21,5 +23,9 @@ import retrofit2.http.Url;
 public interface TestService {
     @Headers("Authorization:APPCODE c7578936e2a542799f4b32c2d95c2f84")
     @POST("whapi/json/alicityweather/briefforecast3days")
-    Observable<AdEntity> getData(@Query("cityId") String cityId);
+    BaseObservable<AdEntity> getData(@Query("cityId") String cityId);
+
+    @Headers("Authorization:APPCODE c7578936e2a542799f4b32c2d95c2f84")
+    @POST("whapi/json/alicityweather/briefforecast3days")
+    BaseObservable<BaseObserver.RxExecute<AdEntity>> getDatas(@Query("cityId") String cityId);
 }
